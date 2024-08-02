@@ -43,13 +43,13 @@ pipeline {
         }  
     }
 
-    post {
-        always {
-            archiveArtifacts artifacts: '**/TestResults/*.trx', allowEmptyArchive: true
-            step([
-                $class: 'MSTestPublisher',
-                testResultFile: '**/TestResults/*.trx'
-            ])
-        }
-    }
+    // post {
+    //     always {
+    //         archiveArtifacts artifacts: '**/TestResults/*.trx', allowEmptyArchive: true
+    //         step([
+    //             $class: 'MSTestPublisher',
+    //             testResultFile: '**/TestResults/*.trx'
+    //         ])
+    //     }
+    // }
 }
