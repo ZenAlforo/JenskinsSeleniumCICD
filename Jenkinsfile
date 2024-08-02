@@ -9,19 +9,19 @@ pipiline {
             }
         }
 
-        stage("") {
+        stage("Checkout code") {
             // install .dotnet
         }
 
-        stage("") {
+        stage("Setup .Net Core") {
             // install dependencies
         }
 
-        stage("") {
+        stage("Restore dependencies") {
             // build
         }
 
-        stage("") {
+        stage("Run Tests") {
             // run tests
         }
     }
