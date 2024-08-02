@@ -41,15 +41,15 @@ pipeline {
                 bat 'dotnet test SeleniumIde.sln --logger "trx;LogFileName=TestResults.trx'
             }
         }  
+    }
 
-        post {
-            always {
-                archiveArtifacts artifacts: '**/TestResults/*.trx', allowEmptyArchive: true
-                step([
-                    $class: 'MSTestPublisher',
-                    testResultFile: '**/TestResults/*.trx'
-                ])
-            }
+    post {
+        always {
+            archiveArtifacts artifacts: '**/TestResults/*.trx', allowEmptyArchive: true
+            step([
+                $class: 'MSTestPublisher',
+                testResultFile: '**/TestResults/*.trx'
+            ])
         }
     }
 }
