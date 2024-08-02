@@ -31,7 +31,8 @@ pipeline {
         stage("Build") {
             // checkout the repository
             steps {
-                bat 'dotnet restore SeleniumIde.sln --configuration Release'
+                bat 'dotnet restore SeleniumIde.sln -c Release'
+                
             }
         }  
 
@@ -43,13 +44,13 @@ pipeline {
         }  
     }
 
-    // post {
-    //     always {
-    //         archiveArtifacts artifacts: '**/TestResults/*.trx', allowEmptyArchive: true
-    //         step([
-    //             $class: 'MSTestPublisher',
-    //             testResultFile: '**/TestResults/*.trx'
-    //         ])
-    //     }
-    // }
+    post {
+        always {
+            archiveArtifacts artifacts: '**/TestResults/*.trx', allowEmptyArchive: true
+            step([
+                $class: 'MSTestPublisher',
+                testResultFile: '**/TestResults/*.trx'
+            ])
+        }
+    }
 }
