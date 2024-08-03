@@ -31,7 +31,7 @@ pipeline {
         stage("Build") {
             // checkout the repository
             steps {
-                bat 'dotnet restore SeleniumIde.sln --configuration Release'
+                bat 'dotnet build SeleniumIde.sln --configuration Release'
                 
             }
         }  
@@ -39,7 +39,7 @@ pipeline {
         stage("Run Tests") {
             // checkout the repository
             steps {
-                bat 'dotnet test SeleniumIde.sln --logger "trx;LogFileName=TestResults.trx'
+                bat 'dotnet test SeleniumIde.sln --logger "trx;LogFileName=TestResults.trx"'
             }
         }  
     }
