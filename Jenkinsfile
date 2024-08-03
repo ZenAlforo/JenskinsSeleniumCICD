@@ -31,7 +31,7 @@ pipeline {
         stage("Build") {
             // checkout the repository
             steps {
-                bat 'dotnet restore SeleniumIde.sln -c Release'
+                bat 'dotnet restore SeleniumIde.sln --configuration Release'
                 
             }
         }  
